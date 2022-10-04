@@ -1,3 +1,9 @@
+.container {
+  background-color: bisque;
+  background-image: url(./images/ice-unicorn.png);
+  background-repeat: no-repeat;
+}
+
 .task {
   display: block;
   width: 300px;
