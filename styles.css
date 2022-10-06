@@ -1,24 +1,23 @@
 body {
   font-family: "EB Garamond", serif;
-  color: beige;
-  font-size: 16px;
+  color: white;
+  font-size: 18px;
   line-height: 1.5;
   text-align: center;
   width: 100vw;
   height: 100vh;
   background-color: black;
 }
-
+.start-room {
+  display: inline-block;
+}
 .worlds-area {
   display: none;
 }
-.btn-list {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
 
+.text {
+  width: 80vw;
+}
 .multi-task {
   display: none;
 }

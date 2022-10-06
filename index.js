@@ -1,26 +1,10 @@
-//hide main page and show
-function nextPage(previous, newPage) {
-  document.getElementById(previous).style.display = "none";
-  document.getElementById(newPage).style.display = "inline-block";
-}
-//changing of Worls pages
-function worldChange(worldName) {
-  document.getElementById("world-title").innerHTML = worldName.title;
-  document.getElementById("world-descr").innerHTML = worldName.descr;
-  document.getElementById("image-world").src = worldName.image;
-  document.getElementById("task-of-world").innerHTML =
-    "give the right answer to receive talisman of  " + worldName.title;
-  document.getElementById("multi-task").style.display = "none";
-}
-// document.getElementById("btn-list").style.display = "none";
-// document.getElementById("start-multi").style.display = "none";
-
 //Creating class Element
 class World {
-  constructor(title, symbol, descr, image) {
+  constructor(title, symbol, descr, direct, image) {
     this._title = title;
     this._symbol = symbol;
     this._descr = descr;
+    this._direct = direct;
     this._backgroundImage = image;
     this._linkedWorlds = {};
     this._linkedUtoWorld = {};
@@ -37,8 +21,8 @@ class World {
   get descr() {
     return this._descr;
   }
-  get symbol() {
-    return this._symbol;
+  get direct() {
+    return this._direct;
   }
 
   //Description of World of the element
@@ -65,31 +49,36 @@ class World {
 const Whole = new World(
   "Whole World",
   "Symbol of integrity and freedom",
-  "Whole World is associated with the whole year seasons, with all directions, with all colors. To find all talismans search in all directions of the world: North, South, East, West. Type chosen direction below",
+  "Whole World is associated with the whole year seasons, with all directions, with all colors.",
+  "To find all talismans search in all directions of the world: North, South, East, West.",
   "./images/four-elements.jpg"
 );
 const Earth = new World(
   "Earth",
   "Symbol of stability, nourishment, security, fertility, health, and home.",
   "Earth is associated with the season of winter, midnight, and the cardinal direction North. Earth is depicted through green, brown and yellow.",
+  "To find more talismans search on East or West.",
   "./images/earth-element.jpg"
 );
 const Fire = new World(
   "Fire",
   "Symbol of love, desire, anger, power, assertiveness, and energy.",
   "Fire is associated with the season of summer, hot afternoons, and the cardinal direction south, and is typically depicted through the colors orange, red, and yellow. ",
+  "To find more talismans search on East or West.",
   "./images/fire-element.jpg"
 );
 const Water = new World(
   "Water",
   "Symbol of rebirth, healing, fertility, change, dreaming, clarity, intuition.",
   "Water is associated with the season of autumn, sunset, and the cardinal direction west, and the colors used to depict water are blue, grey, silver and black.",
+  "To find more talismans search on North or South.",
   "./images/water-element.jpg"
 );
 const Air = new World(
   "Air",
   "Symbol of knowledge, perception, communication, creativity, and strategy.",
   "Air is associated with the season of spring, sunrise, and the cardinal direction east and is depicted through yellow, blue, white, and grey.",
+  "To find more talismans search on North or South.",
   "./images/air-element.jpg"
 );
 //Link worlds
@@ -233,4 +222,36 @@ function rightAnswer() {
   } else {
     document.getElementById("answer").style.backgroundColor = "red";
   }
+}
+
+//changing of Worls pages
+function displayWorld(worldName) {
+  document.getElementById("start-room").style.display = "none";
+  document.getElementById("worlds-area").style.display = "inline-block";
+  document.getElementById("world-title").innerHTML = worldName.title;
+  document.getElementById("world-symbol").innerHTML = worldName.symbol;
+  document.getElementById("world-descr").innerHTML = worldName.descr;
+  document.getElementById("image-world").src = worldName.image;
+  document.getElementById("world-directions").innerHTML = worldName.direct;
+  document.getElementById("task-of-world").innerHTML =
+    "give the right answer to receive talisman of  " + worldName.title;
+  document.getElementById("choose-direction").focus();
+}
+//start game function
+function startGame() {
+  let currentWorld = Whole;
+  displayWorld(currentWorld);
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      command = document.getElementById("choose-direction").value;
+      const directions = ["north", "south", "east", "west"];
+      if (directions.includes(command.toLowerCase())) {
+        currentWorld = currentWorld.move(command);
+        displayWorld(currentWorld);
+      } else {
+        document.getElementById("choose-direction").value = "";
+        alert("That is not a valid command please try again");
+      }
+    }
+  });
 }
