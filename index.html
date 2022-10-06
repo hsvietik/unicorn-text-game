@@ -15,24 +15,88 @@
   </head>
   <body>
     <div class="container" id="container">
-      <div class="start-room">
+      <div class="start-room" id="start-room">
         <h1>Four Elements Text Game</h1>
         <p>
           Only the Unicorn of Peace can restore peace on Earth. To find it, you
           need to collect all the talismans of the four elements.
         </p>
         <p>Unicorns that live in these worlds will help you.</p>
+        <img
+          id="image-main"
+          src="./images/four-elements-start.jpg"
+          alt="four elements"
+          width="300"
+        />
         <p>Click he button to start the adventure!</p>
         <button
           class="button"
           id="start-button"
           type="button"
-          onclick="nextPage('main', 'introduce')"
+          onclick="nextPage('start-room', 'worlds-area'), worldChange(Whole)"
         >
-          Let's start</button
-        >>
+          Let's start
+        </button>
       </div>
+      <div class="worlds-area" id="worlds-area">
+        <h2 id="world-title"></h2>
+        <p id="world-descr"></p>
+        <img id="image-world" src="" alt="" width="300" />
+        <img id="image-unicorn" src="" alt="" width="300" />
+        <ul class="btn-list" id="btn-list">
+          <li>
+            <button
+              id="button1"
+              class="btn"
+              type="button"
+              value="east"
+              onclick="worldChange(Air)"
+            >
+              East
+            </button>
+          </li>
+          <li>
+            <button
+              id="button2"
+              class="btn"
+              type="button"
+              value="west"
+              onclick="worldChange(Water)"
+            >
+              West
+            </button>
+          </li>
+          <li>
+            <button
+              id="button3"
+              class="btn"
+              type="button"
+              value="north"
+              onclick="worldChange(Earth)"
+            >
+              North
+            </button>
+          </li>
+          <li>
+            <button
+              id="button4"
+              class="btn"
+              type="button"
+              value="south"
+              onclick="worldChange(Fire)"
+            >
+              South
+            </button>
+          </li>
+        </ul>
+        <button id="start-multi" onclick="multiplication()">Start game</button>
+        <!-- <p>Choose Unicorn</p>
+        <button id="button1" type="button" onclick="">Option 1</button>
+        <button id="button2" type="button" onclick="">Option 2</button> -->
+      </div>
+
       <div class="multi-task" id="multi-task">
+        <p id="task-of-world"></p>
         <p class="task" id="task"></p>
         <p>Give the right answer below</p>
         <input

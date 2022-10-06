@@ -4,16 +4,21 @@ body {
   font-size: 16px;
   line-height: 1.5;
   text-align: center;
-}
-.container {
   width: 100vw;
   height: 100vh;
-  /* margin: 10px auto; */
   background-color: black;
-  background-image: url(./images/four-elements-start.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
 }
+
+.worlds-area {
+  display: none;
+}
+.btn-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
 .multi-task {
   display: none;
 }
