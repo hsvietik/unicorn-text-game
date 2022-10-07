@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=Open+Sans:wght@400;600;700&family=Raleway:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=Open+Sans:wght@400;600;700&family=Raleway:wght@700&family=Roboto:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
@@ -43,21 +43,15 @@
         <p class="text" id="world-symbol"></p>
         <p class="text" id="world-descr"></p>
         <img id="image-world" src="" alt="" width="300" />
+        <div class="multi-task" id="multi-task">
+          <p id="task-of-world"></p>
+          <p class="task" id="task"></p>
+          <p id="notes">Give the right answer below</p>
+          <input class="answer" id="answer" type="number" />
+        </div>
         <p class="text" id="world-directions"></p>
-        <img id="image-unicorn" src="" alt="" width="300" />
+        <!-- <img id="image-unicorn" src="" alt="" width="300" /> -->
         <input type="text" name="choose-direction" id="choose-direction" />
-      </div>
-
-      <div class="multi-task" id="multi-task">
-        <p id="task-of-world"></p>
-        <p class="task" id="task"></p>
-        <p>Give the right answer below</p>
-        <input
-          class="answer"
-          id="answer"
-          type="number"
-          onchange="rightAnswer()"
-        />
       </div>
     </div>
     <script
