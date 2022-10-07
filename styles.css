@@ -14,7 +14,9 @@ body {
 .worlds-area {
   display: none;
 }
-
+.finish-room {
+  display: none;
+}
 .text {
   width: 80vw;
 }

@@ -201,7 +201,17 @@ Fire.linkUnicornToWorld("inhabitant", RainbowU);
 Water.linkUnicornToWorld("inhabitant", WaterU);
 Water.linkUnicornToWorld("inhabitant", IceU);
 
-//multiplication task
+// counting score
+let totalScore = 0;
+function countScore() {
+  totalScore = totalScore + 1;
+  console.log(totalScore);
+  if (totalScore === 4) {
+    document.getElementById("worlds-area").style.display = "none";
+    document.getElementById("finish-room").style.display = "inline-block";
+  }
+}
+// cleaning input function
 function clean() {
   document.getElementById("answer").addEventListener("blur", function (event) {
     document.getElementById("answer").value = "";
@@ -209,6 +219,7 @@ function clean() {
     document.getElementById("notes").innerHTML = "Give the right answer below";
   });
 }
+//multiplication task
 function multiplication() {
   document.getElementById("multi-task").style.display = "inline-block";
   let number1 = Math.floor(Math.random() * 7) + 2;
@@ -231,12 +242,12 @@ function multiplication() {
             "Congratulations! Now you have talisman";
           document.getElementById("answer").style.backgroundColor = "white";
           clean();
-        } else {
-          document.getElementById("answer").style.backgroundColor =
-            "lightcoral";
-          document.getElementById("notes").innerHTML =
-            "Your answer is wrong please try again";
+          countScore();
         }
+      } else {
+        document.getElementById("answer").style.backgroundColor = "lightcoral";
+        document.getElementById("notes").innerHTML =
+          "Your answer is wrong please try again";
       }
     });
 }
@@ -244,6 +255,8 @@ function multiplication() {
 //changing of Worls pages
 function displayWorld(worldName) {
   document.getElementById("start-room").style.display = "none";
+  document.getElementById("finish-room").style.display = "none";
+  document.getElementById("multi-task").style.display = "none";
   document.getElementById("worlds-area").style.display = "inline-block";
   document.getElementById("world-title").innerHTML = worldName.title;
   document.getElementById("world-symbol").innerHTML = worldName.symbol;
