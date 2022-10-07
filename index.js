@@ -273,7 +273,7 @@ function startGame() {
   document
     .getElementById("choose-direction")
     .addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
+      if (event.key == "Enter") {
         command = document.getElementById("choose-direction").value;
         const directions = ["north", "south", "east", "west"];
         if (directions.includes(command.toLowerCase())) {
