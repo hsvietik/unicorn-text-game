@@ -202,26 +202,41 @@ Water.linkUnicornToWorld("inhabitant", WaterU);
 Water.linkUnicornToWorld("inhabitant", IceU);
 
 //multiplication task
-function multiplication() {
-  document.getElementById("multi-task").style.display = "block";
+function clean() {
+  document.getElementById("answer").addEventListener("blur", function (event) {
+    document.getElementById("answer").innerHTML = "";
+    document.getElementById("task").innerHTML = "";
+    document.getElementById("answer").style.backgroundColor = "white";
+  });
 }
-
-let number1 = Math.floor(Math.random() * 7) + 2;
-console.log(number1);
-let number2 = Math.floor(Math.random() * 7) + 2;
-console.log(number2);
-let product = number1 * number2;
-console.log(product);
-
-document.getElementById("task").innerHTML = number1 + " * " + number2;
-function rightAnswer() {
-  let userAnswer = Number(document.getElementById("answer").value);
-  console.log(userAnswer);
-  if (userAnswer === product) {
-    document.getElementById("answer").style.backgroundColor = "lightgreen";
-  } else {
-    document.getElementById("answer").style.backgroundColor = "red";
-  }
+function multiplication() {
+  document.getElementById("multi-task").style.display = "inline-block";
+  let number1 = Math.floor(Math.random() * 7) + 2;
+  console.log(number1);
+  let number2 = Math.floor(Math.random() * 7) + 2;
+  console.log(number2);
+  let product = number1 * number2;
+  console.log(product);
+  document.getElementById("task").innerHTML = number1 + " * " + number2;
+  document
+    .getElementById("answer")
+    .addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        let userAnswer = Number(document.getElementById("answer").value);
+        console.log(userAnswer);
+        if (userAnswer === product) {
+          document.getElementById("answer").style.backgroundColor =
+            "lightgreen";
+          document.getElementById("notes").innerHTML =
+            "Congratulations! Now you have talisman";
+        } else {
+          document.getElementById("answer").style.backgroundColor =
+            "lightcoral";
+          document.getElementById("notes").innerHTML =
+            "Your answer is wrong please try again";
+        }
+      }
+    });
 }
 
 //changing of Worls pages
@@ -234,24 +249,29 @@ function displayWorld(worldName) {
   document.getElementById("image-world").src = worldName.image;
   document.getElementById("world-directions").innerHTML = worldName.direct;
   document.getElementById("task-of-world").innerHTML =
-    "give the right answer to receive talisman of  " + worldName.title;
+    "Give the right answer to receive talisman of  " + worldName.title;
   document.getElementById("choose-direction").focus();
 }
 //start game function
 function startGame() {
   let currentWorld = Whole;
   displayWorld(currentWorld);
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      command = document.getElementById("choose-direction").value;
-      const directions = ["north", "south", "east", "west"];
-      if (directions.includes(command.toLowerCase())) {
-        currentWorld = currentWorld.move(command);
-        displayWorld(currentWorld);
-      } else {
-        document.getElementById("choose-direction").value = "";
-        alert("That is not a valid command please try again");
+  document
+    .getElementById("choose-direction")
+    .addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        command = document.getElementById("choose-direction").value;
+        const directions = ["north", "south", "east", "west"];
+        if (directions.includes(command.toLowerCase())) {
+          currentWorld = currentWorld.move(command);
+          displayWorld(currentWorld);
+          document.getElementById("choose-direction").value = "";
+          multiplication();
+          clean();
+        } else {
+          document.getElementById("choose-direction").value = "";
+          alert("That is not a valid command please try again");
+        }
       }
-    }
-  });
+    });
 }
