@@ -253,11 +253,9 @@ function multiplication() {
     });
 }
 
-//changing of Worls pages
+//changing of Wordls pages
 function displayWorld(worldName) {
   document.getElementById("start-room").style.display = "none";
-  document.getElementById("finish-room").style.display = "none";
-  document.getElementById("multi-task").style.display = "none";
   document.getElementById("worlds-area").style.display = "inline-block";
   document.getElementById("world-title").innerHTML = worldName.title;
   document.getElementById("world-symbol").innerHTML = worldName.symbol;
