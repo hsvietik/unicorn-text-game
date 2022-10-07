@@ -209,6 +209,7 @@ function countScore() {
   if (totalScore === 4) {
     document.getElementById("worlds-area").style.display = "none";
     document.getElementById("finish-room").style.display = "inline-block";
+    totalScore = 0;
   }
 }
 // cleaning input function
