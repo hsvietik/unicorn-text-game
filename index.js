@@ -204,9 +204,9 @@ Water.linkUnicornToWorld("inhabitant", IceU);
 //multiplication task
 function clean() {
   document.getElementById("answer").addEventListener("blur", function (event) {
-    document.getElementById("answer").innerHTML = "";
+    document.getElementById("answer").value = "";
     document.getElementById("task").innerHTML = "";
-    document.getElementById("answer").style.backgroundColor = "white";
+    document.getElementById("notes").innerHTML = "Give the right answer below";
   });
 }
 function multiplication() {
@@ -225,10 +225,12 @@ function multiplication() {
         let userAnswer = Number(document.getElementById("answer").value);
         console.log(userAnswer);
         if (userAnswer === product) {
-          document.getElementById("answer").style.backgroundColor =
-            "lightgreen";
+          // document.getElementById("answer").style.backgroundColor =
+          //   "lightgreen";
           document.getElementById("notes").innerHTML =
             "Congratulations! Now you have talisman";
+          document.getElementById("answer").style.backgroundColor = "white";
+          clean();
         } else {
           document.getElementById("answer").style.backgroundColor =
             "lightcoral";
@@ -267,7 +269,6 @@ function startGame() {
           displayWorld(currentWorld);
           document.getElementById("choose-direction").value = "";
           multiplication();
-          clean();
         } else {
           document.getElementById("choose-direction").value = "";
           alert("That is not a valid command please try again");
